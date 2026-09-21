@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I LOVE YOU THANH TIÊN</title>
+
+<style>
+
+/* =========================
+   CÀI ĐẶT CHUNG
+========================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+}
+
+/* =========================
+   MÀN HÌNH QR
+========================= */
+
+#qrScreen{
+    width:100%;
+    height:100vh;
+    background:linear-gradient(135deg,#dff6ff,#c7d2fe,#fbcfe8);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.qrBox{
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+}
+
+.qrBox h1{
+    margin-top:0;
+    color:#263b80;
+    font-size:30px;
+}
+
+.qrBox p{
+    color:#555;
+    font-size:17px;
+}
+
+#qrcode{
+    display:flex;
+    justify-content:center;
+    margin:20px auto;
+}
+
+.qrNote{
+    font-size:14px !important;
+    color:#777 !important;
+}
+
+
+/* =========================
+   MÀN HÌNH CHÍNH
+========================= */
+
+#main{
+    display:none;
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+
+/* =========================
+   PHẦN 1 - I LOVE YOU
+========================= */
+
+#loveScene{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+    radial-gradient(circle at 20% 20%,#7dd3fc,transparent 30%),
+    radial-gradient(circle at 80% 30%,#f9a8d4,transparent 30%),
+    linear-gradient(135deg,#312e81,#7c3aed,#db2777);
+
+    animation:backgroundMove 8s infinite alternate;
+}
+
+@keyframes backgroundMove{
+    from{
+        filter:hue-rotate(0deg);
+    }
+    to{
+        filter:hue-rotate(20deg);
+    }
+}
+
+.loveTitle{
+    color:white;
+    font-size:clamp(40px,7vw,90px);
+    font-weight:bold;
+    letter-spacing:5px;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,.8),
+    0 0 30px rgba(255,100,200,.8);
+
+    animation:
+    titleZoom 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleZoom{
+    from{
+        transform:scale(.95);
+    }
+    to{
+        transform:scale(1.05);
+    }
+}
+
+
+/* =========================
+   TIMELINE CHUYỂN CẢNH
+========================= */
+
+#loveScene{
+    animation:
+    showLove 5s linear forwards;
+}
+
+@keyframes showLove{
+    0%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+
+/* =========================
+   TRUNG THU
+========================= */
+
+#moonScene{
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(circle at 50% 20%,
+    #fff7c2 0,
+    #ffe58a 55px,
+    transparent 60px),
+
+    linear-gradient(
+    180deg,
+    #10184a 0%,
+    #172554 45%,
+    #312e81 75%,
+    #4c1d95 100%
+    );
+
+    opacity:0;
+
+    animation:
+    moonAppear 2s ease 5s forwards;
+}
+
+@keyframes moonAppear{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+
+/* =========================
+   MẶT TRĂNG
+========================= */
+
+.moon{
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+
+    background:#fff3a3;
+
+    top:10%;
+    right:12%;
+
+    box-shadow:
+    0 0 20px #fff3a3,
+    0 0 60px rgba(255,240,150,.7);
+}
+
+
+/* =========================
+   SAO
+========================= */
+
+.star{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+
+    box-shadow:
+    0 0 6px white;
+
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:.3;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+.s1{left:10%;top:15%;}
+.s2{left:25%;top:30%;}
+.s3{left:40%;top:12%;}
+.s4{left:60%;top:25%;}
+.s5{left:75%;top:15%;}
+.s6{left:85%;top:40%;}
+.s7{left:15%;top:55%;}
+.s8{left:45%;top:45%;}
+.s9{left:65%;top:55%;}
+.s10{left:90%;top:65%;}
+
+
+/* =========================
+   ĐÈN LỒNG
+========================= */
+
+.lantern{
+    position:absolute;
+    width:55px;
+    height:75px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ef4444,
+    #fbbf24,
+    #ef4444
+    );
+
+    box-shadow:
+    0 0 15px #fbbf24,
+    0 0 35px rgba(251,191,36,.6);
+
+    animation:floatLantern 3s ease-in-out infinite;
+}
+
+.lantern:before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:12px;
+    background:#fbbf24;
+    left:24px;
+    top:-12px;
+}
+
+.lantern:after{
+    content:"";
+    position:absolute;
+    width:3px;
+    height:25px;
+    background:#fbbf24;
+    left:26px;
+    bottom:-25px;
+}
+
+@keyframes floatLantern{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.l1{
+    left:8%;
+    top:25%;
+}
+
+.l2{
+    left:20%;
+    top:12%;
+    transform:scale(.75);
+}
+
+.l3{
+    right:8%;
+    top:30%;
+}
+
+.l4{
+    right:20%;
+    top:12%;
+    transform:scale(.75);
+}
+
+
+/* =========================
+   NỘI DUNG TRUNG THU
+========================= */
+
+.greeting{
+    position:relative;
+    z-index:5;
+
+    text-align:center;
+
+    color:white;
+
+    animation:
+    greetingUp 2s ease 6s both;
+}
+
+@keyframes greetingUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.greeting h1{
+    font-size:clamp(35px,6vw,75px);
+
+    margin:0 0 20px;
+
+    color:#ffe98a;
+
+    text-shadow:
+    0 0 10px #ffcc33,
+    0 0 25px #ff9900;
+}
+
+.greeting h2{
+    font-size:clamp(25px,4vw,50px);
+
+    margin:10px;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,.8);
+}
+
+
+/* =========================
+   ANH YÊU EM
+========================= */
+
+.loveMessage{
+    margin-top:30px;
+
+    font-size:clamp(20px,3vw,35px);
+
+    color:#ffb6d9;
+
+    font-weight:bold;
+
+    animation:
+    heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+
+/* =========================
+   TIM BAY
+========================= */
+
+.heart{
+    position:absolute;
+
+    bottom:-30px;
+
+    font-size:25px;
+
+    animation:heartFly 6s linear infinite;
+
+    opacity:.8;
+}
+
+@keyframes heartFly{
+
+    0%{
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(-110vh)
+        rotate(360deg);
+
+        opacity:0;
+    }
+}
+
+.h1{left:10%;animation-delay:0s;}
+.h2{left:25%;animation-delay:2s;}
+.h3{left:40%;animation-delay:1s;}
+.h4{left:55%;animation-delay:3s;}
+.h5{left:70%;animation-delay:1.5s;}
+.h6{left:85%;animation-delay:4s;}
+
+
+/* =========================
+   XOAY NGANG
+========================= */
+
+#rotateMessage{
+    display:none;
+}
+
+
+/* =========================
+   ĐIỆN THOẠI DỌC
+========================= */
+
+@media (orientation:portrait){
+
+    #rotateMessage{
+        display:flex;
+
+        position:fixed;
+
+        z-index:9999;
+
+        width:100%;
+        height:100%;
+
+        background:#111827;
+
+        color:white;
+
+        justify-content:center;
+        align-items:center;
+
+        text-align:center;
+
+        padding:30px;
+
+        font-size:22px;
+    }
+
+    #rotateMessage div{
+        animation:rotateIcon 2s infinite alternate;
+    }
+
+    @keyframes rotateIcon{
+        from{
+            transform:rotate(0deg);
+        }
+
+        to{
+            transform:rotate(90deg);
+        }
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================
+     MÀN HÌNH QR
+======================================= -->
+
+<div id="qrScreen">
+
+    <div class="qrBox">
+
+        <h1>💌 Một món quà nhỏ</h1>
+
+        <p>Quét mã QR bằng điện thoại</p>
+
+        <div id="qrcode"></div>
+
+        <p class="qrNote">
+            Sau khi quét, hãy xoay điện thoại ngang
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================
+     MÀN HÌNH CHÍNH
+======================================= -->
+
+<div id="main">
+
+
+    <!-- CẢNH 1 -->
+
+    <div id="loveScene">
+
+        <div class="loveTitle">
+            I LOVE YOU<br>
+            THANH TIÊN ❤️
+        </div>
+
+    </div>
+
+
+    <!-- CẢNH 2 -->
+
+    <div id="moonScene">
+
+        <div class="moon"></div>
+
+
+        <!-- SAO -->
+
+        <div class="star s1"></div>
+        <div class="star s2"></div>
+        <div class="star s3"></div>
+        <div class="star s4"></div>
+        <div class="star s5"></div>
+        <div class="star s6"></div>
+        <div class="star s7"></div>
+        <div class="star s8"></div>
+        <div class="star s9"></div>
+        <div class="star s10"></div>
+
+
+        <!-- ĐÈN LỒNG -->
+
+        <div class="lantern l1"></div>
+        <div class="lantern l2"></div>
+        <div class="lantern l3"></div>
+        <div class="lantern l4"></div>
+
+
+        <!-- NỘI DUNG -->
+
+        <div class="greeting">
+
+            <h1>🌕 Trung Thu 🌕</h1>
+
+            <h2>
+                Chúc em Trung Thu vui vẻ
+            </h2>
+
+            <div class="loveMessage">
+                Anh yêu em nhiều lắm ❤️
+            </div>
+
+        </div>
+
+
+        <!-- TIM BAY -->
+
+        <div class="heart h1">❤️</div>
+        <div class="heart h2">💗</div>
+        <div class="heart h3">❤️</div>
+        <div class="heart h4">💖</div>
+        <div class="heart h5">💕</div>
+        <div class="heart h6">❤️</div>
+
+
+    </div>
+
+</div>
+
+
+<!-- ======================================
+     THÔNG BÁO XOAY NGANG
+======================================= -->
+
+<div id="rotateMessage">
+
+    <div>
+        📱<br><br>
+        Vui lòng xoay điện thoại<br>
+        sang ngang
+    </div>
+
+</div>
+
+
+<!-- ======================================
+     QR CODE
+======================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<script>
+
+/* =====================================
+   LINK MÀ QR SẼ MỞ
+===================================== */
+
+var QR_URL =
+"https://duonghaiau271106-sketch.github.io/nuiba-tayninh/";
+
+
+/* =====================================
+   TẠO QR
+===================================== */
+
+new QRCode(
+    document.getElementById("qrcode"),
+    {
+        text:QR_URL,
+
+        width:180,
+        height:180,
+
+        colorDark:"#111827",
+        colorLight:"#ffffff",
+
+        correctLevel:QRCode.CorrectLevel.H
+    }
+);
+
+
+/* =====================================
+   KHI NGƯỜI DÙNG MỞ TRANG
+===================================== */
+
+function startExperience(){
+
+    document.getElementById("qrScreen").style.display="none";
+
+    document.getElementById("main").style.display="block";
+
+
+    /* Cố gắng khóa màn hình ngang
+       nếu trình duyệt hỗ trợ */
+
+    if(
+        screen.orientation &&
+        screen.orientation.lock
+    ){
+
+        screen.orientation
+        .lock("landscape")
+        .catch(function(){});
+
+    }
+
+}
+
+
+/* =====================================
+   CHỈ CHẠY TRẢI NGHIỆM KHI TRANG ĐƯỢC
+   MỞ TRÊN ĐIỆN THOẠI BẰNG LINK
+
+   Khi test trên máy tính:
+   thêm ?play vào cuối URL
+===================================== */
+
+if(
+    window.location.search.indexOf("play") !== -1
+){
+
+    startExperience();
+
+}
+
+
+/* =====================================
+   NẾU MỞ TRÊN ĐIỆN THOẠI
+   CHẠY LUÔN
+===================================== */
+
+if(
+    /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+    )
+){
+
+    startExperience();
+
+}
+
+</script>
+
+</body>
+</html>
